@@ -48,10 +48,16 @@
             // função para chamada de outros aquivos / dados FUNC ASSINCRONA
             fetch(route)
              .then(data => data.text())
-             .then(html => console.log(html))
-
+             .then(html => 
+                document.querySelector('#app').innerHTML = html // selecionando app para injetar codigo html
+             )
+            
             console.log(route)
-        }
+        }   
+
+        handle()
+
+        window.onpopstate = () => handle() // essa função para funcionar a navegação do navegador setas
 
     </script>
 </body>
