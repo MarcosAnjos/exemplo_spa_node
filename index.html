@@ -43,6 +43,14 @@
         // Função Manipulação para pegar a rota 
         function handle() {
             const { pathname } = window.location // função para pegar a rota 
+            const route = routes[pathname] || routes[404] // estou direcinando para as rotas existentes, caso não seja verdadeira retorna 404
+            
+            // função para chamada de outros aquivos / dados FUNC ASSINCRONA
+            fetch(route)
+             .then(data => data.text())
+             .then(html => console.log(html))
+
+            console.log(route)
         }
 
     </script>
