@@ -1,14 +1,13 @@
+import {Router} from "./router.js"
+
 // Mapeamento de rota
-const routes = {
-    "/": "/pages/home.html",
-    "/about": "/pages/about.html",
-    "/contact": "/pages/contact.html",
-    "/404": "pages/404.html"
-}
+const router = new Router()
+router.add("/", "/pages/home.html")
+router.add("/about", "/pages/about.html")
+router.add("/contact","/pages/contact.html")
+router.add(404, "/pages/404.html")
 
+router.handle()
 
-
-handle()
-
-window.onpopstate = () => handle() // essa função para funcionar a navegação do navegador setas
-window.route = () => route() // executar essa funçao para disparar a função router
+window.onpopstate = () => router.handle() // essa função para funcionar a navegação do navegador setas
+window.route = () => router.route() // executar essa funçao para disparar a função router

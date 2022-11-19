@@ -1,6 +1,7 @@
-class Router {
+export class Router {
+    routes = {}
 
-    // Mapeamento de rota
+    // Modelo para o Mapeamento de rota
     add(routeName, page) {
         this.routes[routeName] = page
     }
@@ -26,9 +27,6 @@ class Router {
         .then(html => 
             document.querySelector('#app').innerHTML = html // selecionando app para injetar codigo html
         )
-        
-        console.log(route)
+        // console.log(route)
     }   
-
-
 }
