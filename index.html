@@ -9,10 +9,10 @@
 <body>
     <!-- Criando o menu -->
     <nav>
-        <a href="/">Home</a>
-        <a href="/aboud">Contact</a>
-        <a href="/contato">Contato</a>
-        <a href="/404">404</a>
+        <a href="/" onclick="route()">Home</a>
+        <a href="/about" onclick="route()">Contact</a>
+        <a href="/contact" onclick="route()">Contato</a>
+        <a href="/404" onclick="route()">404</a>
     </nav>
 
 
@@ -20,14 +20,31 @@
 
     <!-- Conter as interações com as paginas -->
     <script>
-        // função para rotear 
-        function route(event) {
-            event = event || window.event // verifica se passei um evento, senao pega da global (DOM)
-            event.preventDefault() // por padrão direcionar para a pagina padrão
+
+        // Mapeamento de rota
+        const routes = {
+            "/": "/pages/home.html",
+            "/about": "/pages/about.html",
+            "/contact": "/pages/contact.html",
+            "/404": "pages/404.html"
         }
 
 
-        
+        // função para rotear 
+        function route(event) {
+            event = event || window.event // verifica se passei um evento, senao pega da global (DOM)
+            event.preventDefault() // por padrão direcionar para a pagina padrão, assim adicionamos onclick nossa rota 
+
+            window.history.pushState({}, "", event.target.href) // pegando historio navegação que esta dentro de event , o target é quem desparou que comtem (a) mas queremos que tem detro do (a) 
+
+            handle()
+        }
+
+        // Função Manipulação para pegar a rota 
+        function handle() {
+            const { pathname } = window.location // função para pegar a rota 
+        }
+
     </script>
 </body>
 </html>
